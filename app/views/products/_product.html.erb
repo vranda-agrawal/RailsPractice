@@ -10,8 +10,27 @@
   </p>
 
   <p>
-    <strong>Image Selected:</strong>
-    <%= image_tag (product.image)  %>
+    <strong>File Selected:</strong>
+    <% if product.image.attached? %>
+      <% if (product.image).content_type == "image/png" || (product.image).content_type == "image/jpeg"%>
+        <%= image_tag product.image.variant(resize: "400x400") %>
+      <% else %>
+        <%= link_to 'Click here to download a file', product.image, download: 'data' %>
+      <% end %>
+    <% end %>
   </p>
-
+  <p>
+    <strong>Documents Selected:</strong>
+    <% (product.documents).each do |d| %>
+    <%= d.content_type%>
+      <% if d.content_type == "image/png" || d.content_type == "image/jpeg" %>
+        <%= image_tag d.variant(resize: "400x400") %><br/><br/>
+      <% else %>
+        <%= link_to 'Click here to download a file', d, download: 'data' %><br/><br/>
+      <% end %>
+      ----------------------------------------------------
+      <%= button_to 'Remove this attachments', delete_single_attachment_product_url(d),
+      method: "delete"%>
+    <%end%>
+  </p>
 </div>

@@ -26,6 +26,10 @@
     <%= form.file_field :image %>
   </div>
   <div>
+    <%= form.label :documents, style: "display: block" %>
+    <%= form.file_field :documents, multiple: true %>
+  </div>
+  <div>
     <%= form.submit %>
   </div>
 <% end %>

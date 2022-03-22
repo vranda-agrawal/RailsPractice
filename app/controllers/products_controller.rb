@@ -34,6 +34,23 @@ class ProductsController < ApplicationController
     end
   end
 
+  def delete_image_attachment
+    @image = Product.find(params[:id])
+    @image.image.purge
+    redirect_to products_url
+  end
+
+  def delete_all_attachment
+    @image = Product.find(params[:id])
+    @image.documents.purge
+    redirect_to products_url
+  end
+
+  def delete_single_attachment
+    ActiveStorage::Attachment.find_by(blob_id:params[:id]).purge
+    redirect_to products_url
+  end
+
   # PATCH/PUT /products/1 or /products/1.json
   def update
     respond_to do |format|
@@ -65,6 +82,6 @@ class ProductsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def product_params
-      params.require(:product).permit(:name, :description,:image)
+      params.require(:product).permit(:name, :description,:image, documents: [])
     end
 end
