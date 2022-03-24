@@ -7,19 +7,17 @@ Rails.application.configure do
   # it changes. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
   config.cache_classes = false
-
-  config.action_mailer.default_url_options = { host: 'localhost:3000' }
-  config.action_mailer.delivery_method = :sendmail
+  config.action_mailer.delivery_method = :letter_opener
   config.action_mailer.perform_deliveries = true
+  config.action_mailer.default_url_options = { host: 'localhost:3000' }
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.default_options = {from: 'vrandaagrawal410@gmail.com'}
-  config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     address: 'smtp.gmail.com',
     port: 587,
     domain: 'localhost:3000',
-    :user_name => 'vrandaagrawal410@gmail.com',
-    :password => 'Vranda@sep14',
+    :user_name => '',
+    :password => '',
     authentication: 'plain',
     enable_starttls_auto: true 
   }
