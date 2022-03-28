@@ -1,0 +1,23 @@
+<h1>User Details </h1>
+<table border=" solid 3px ">
+  <tr>
+  <th>First Name</th>
+  <th>Last Name</th>
+  </tr>
+   <% @users.each do |user| %>
+    <tr>
+      <td><%=user.first_name %></td>
+      <td><%=user.last_name %></td>
+      <td>
+      <% user.roles.each do |u| %>
+        <%= u.name %>
+      <% end %></td>
+      <td><%= link_to "Edit User", edit_user_path(id: user.id) %></td>
+      <td><%= button_to "Destroy User",user_path(id: user.id),
+            method: 'delete' ,
+            data:{ confirm: "are you sure"}%></td>
+    </tr>
+  <% end %>
+</table>
+<%= link_to "Add a new User", new_user_path %>
+
