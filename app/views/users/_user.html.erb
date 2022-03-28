@@ -1,0 +1,6 @@
+<%= form_for user do |form| %>
+  <%= form.text_field :first_name, placeholder: 'First Name' %><br/><br/>
+  <%= form.text_field :last_name, placeholder: 'Last Name' %><br/><br/>
+  <%= form.collection_check_boxes :role_ids, Role.all, :id, :name %><br/><br/>
+<%= form.submit %>
+<%end%>
