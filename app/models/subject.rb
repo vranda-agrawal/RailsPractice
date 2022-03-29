@@ -1,4 +1,4 @@
 class Subject < ApplicationRecord
   include PgSearch::Model
-	multisearchable against: [:name]
+  multisearchable against: [:name]
 end
