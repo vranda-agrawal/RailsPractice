@@ -74,7 +74,7 @@ Rails.application.configure do
 
   # Don't log any deprecations.
   config.active_support.report_deprecations = false
-
+  config.active_job.queue_adapter = :sidekiq
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
 
