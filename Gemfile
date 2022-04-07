@@ -16,7 +16,7 @@ gem 'figaro'
 gem "puma", "~> 5.0"
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
 gem "importmap-rails"
-
+gem 'delayed_job_active_record'
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem "turbo-rails"
 
@@ -51,9 +51,7 @@ group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
 end
-group :production do
-  gem 'pg'
-end
+gem 'pg'
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
