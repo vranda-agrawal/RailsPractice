@@ -3,7 +3,9 @@ class QuizzesController < ApplicationController
 
   # GET /quizzes or /quizzes.json
   def index
-    @quizzes = Quiz.all
+    puts "-------------------------------------------------------------------"
+    puts params[:page]
+    @quizzes = Quiz.page params[:page]
   end
 
   # GET /quizzes/1 or /quizzes/1.json
